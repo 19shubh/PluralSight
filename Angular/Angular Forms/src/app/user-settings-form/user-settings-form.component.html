@@ -1,0 +1,60 @@
+<div class="container">
+    <h2>User Settings</h2>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="mb-3">
+            <label for="name">Name</label>
+            <input id="name" name="Name" class="form-control" [(ngModel)]="userSettings.name"
+                    #nameField="ngModel" required [class.field-error]="form.submitted && nameField.invalid">
+            <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
+                Enter a name
+            </div>
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="emailOffers" name="emailOffers" 
+                    [(ngModel)]="userSettings.emailOffers">
+            <label class="form-check-label" for="emailOffers">
+              Email Special Offers
+            </label>
+        </div>
+        <h5>User Interface Style</h5>
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="interface" value="light"
+                        id="lightInterface" [(ngModel)]="userSettings.interfaceStyle">
+                <label class="form-check-label" for="lightInterface">
+                  Light Interface
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="interface" value="medium"
+                        id="mediumInterface" [(ngModel)]="userSettings.interfaceStyle">
+                <label class="form-check-label" for="mediumInterface">
+                    Medium Interface
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="interface" value="dark"
+                        id="darkInterface" [(ngModel)]="userSettings.interfaceStyle">
+                <label class="form-check-label" for="darkInterface">
+                    Dark Interface
+                </label>
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="subscriptionType">Subscription Type</label>
+            <select class="form-control" name="subscriptionType" id="subscriptionType" [(ngModel)]="userSettings.subscriptionType">
+                <option *ngFor="let type of subscriptionTypes | async">
+                    {{ type }}
+                </option>
+              </select>
+        </div>
+        <div class="mb-3">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" class="form-control" rows=3 [(ngModel)]="userSettings.notes"></textarea>
+          </div>
+        <div [hidden]="!postError" class="alert alert-danger">
+            {{ postErrorMsg }}
+        </div>
+        <button class="btn btn-primary">Send</button>
+    </form>
+</div>
