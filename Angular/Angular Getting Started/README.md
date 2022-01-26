@@ -1,4 +1,4 @@
-# Angular-Getting Started ([PluralSight](https://app.pluralsight.com/library/courses/angular-2-getting-started-update/table-of-contents) & [Github](https://github.com/DeborahK/Angular-GettingStarted))
+# Angular: Getting Started `By Deborah Kurata` ([PluralSight](https://app.pluralsight.com/library/courses/angular-2-getting-started-update/table-of-contents) & [Github](https://github.com/DeborahK/Angular-GettingStarted))
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
