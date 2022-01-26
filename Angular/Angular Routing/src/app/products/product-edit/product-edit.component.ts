@@ -16,7 +16,8 @@ export class ProductEditComponent implements OnInit {
 
   private dataIsValid: { [key: string]: boolean } = {};
 
-  product: Product;
+  private currentProduct: Product;
+  private originalProduct: Product;
 
   constructor(private productService: ProductService,
               private messageService: MessageService,
@@ -29,6 +30,19 @@ export class ProductEditComponent implements OnInit {
         this.errorMessage = resolvedData.error;
         this.onProductRetrieved(resolvedData.product);
       })
+  }
+
+  get product(): Product {
+    return this.currentProduct;
+  }
+
+  set product(value: Product) {
+    this.currentProduct = value;
+    this.originalProduct = { ...value };
+  }
+
+  get isDirty(): boolean {
+    return JSON.stringify(this.currentProduct) !== JSON.stringify(this.originalProduct);
   }
 
   onProductRetrieved(product: Product): void {
@@ -90,9 +104,15 @@ export class ProductEditComponent implements OnInit {
     if (message) {
       this.messageService.addMessage(message);
     }
-
+    this.reset();
     // Navigate back to the product list
     this.router.navigate(['/products']);
+  }
+
+  reset(): void {
+    this.dataIsValid = null;
+    this.originalProduct = null;
+    this.currentProduct = null;
   }
 
   validate(): void {

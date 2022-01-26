@@ -8,6 +8,7 @@ import { MessageService } from '../messages/message.service';
 })
 export class AuthService {
   currentUser: User;
+  redirectUrl: string;
 
   get isLoggedIn(): boolean {
     return !!this.currentUser;
@@ -39,5 +40,6 @@ export class AuthService {
 
   logout(): void {
     this.currentUser = null;
+    this.redirectUrl = null;
   }
 }

@@ -8,6 +8,7 @@ import { ProductDetailComponent } from './product-detail.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductEditInfoComponent } from './product-edit/product-edit-info.component';
 import { ProductEditTagsComponent } from './product-edit/product-edit-tags.component';
+import { ProductEditGuard } from './product-edit/product-edit.guard';
 
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
@@ -16,38 +17,34 @@ import { RouterModule } from '@angular/router';
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { 
-        path: 'products',
+      {
+        path: '',
+        component: ProductListComponent,
+        resolve: { resolvedList: ProductListResolverService }
+      },
+      {
+        path: ':id',
+        component: ProductDetailComponent,
+        resolve: { resolvedData: ProductResolverService }
+      },
+      {
+        path: ':id/edit',
+        component: ProductEditComponent,
+        resolve: { resolvedData: ProductResolverService },
+        canDeactivate: [ProductEditGuard],
         children: [
           {
-            path: '', 
-            component: ProductListComponent,
-            resolve: { resolvedList: ProductListResolverService }
+            path: '',
+            redirectTo: 'info',
+            pathMatch: 'full'
           },
-          { 
-            path: ':id', 
-            component: ProductDetailComponent, 
-            resolve: { resolvedData: ProductResolverService } 
+          {
+            path: 'info',
+            component: ProductEditInfoComponent
           },
-          { 
-            path: ':id/edit', 
-            component: ProductEditComponent, 
-            resolve: { resolvedData: ProductResolverService },
-            children: [
-              {
-                path: '', 
-                redirectTo: 'info', 
-                pathMatch: 'full'
-              },
-              {
-                path: 'info', 
-                component: ProductEditInfoComponent
-              },
-              {
-                path: 'tags',
-                component: ProductEditTagsComponent
-              }
-            ]
+          {
+            path: 'tags',
+            component: ProductEditTagsComponent
           }
         ]
       }
