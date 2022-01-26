@@ -1,4 +1,4 @@
-# PsDemo
+# Angular Forms `By Mark Zamoyta` ([PluralSight](https://app.pluralsight.com/library/courses/angular-forms/table-of-contents) & [Github](https://github.com/hailmarvin/PluralSight-AngularForms))
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
