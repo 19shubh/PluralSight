@@ -1,4 +1,4 @@
-# Angular Routing ([PluralSight](https://app.pluralsight.com/library/courses/angular-routing/table-of-contents) & [Github](https://github.com/DeborahK/Angular-Routing))
+# Angular Routing `By Deborah Kurata` ([PluralSight](https://app.pluralsight.com/library/courses/angular-routing/table-of-contents) & [Github](https://github.com/DeborahK/Angular-Routing))
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
 
