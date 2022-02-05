@@ -8,14 +8,14 @@ import { UserSettings } from './user-settings';
 })
 export class DataService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor() { }
 
   getSubscriptionTypes(): Observable<string[]> {
     return of(['One', 'Two', 'Three']);
   }
 
   postUserSettingsForm(userSettings: UserSettings) : Observable<any> {
-    return this.httpClient.post('url', userSettings);
+    return of(userSettings);
   }
 
 }
