@@ -1,4 +1,4 @@
-# APM
+# RxJS in Angular `By Deborah Kurata` ([PluralSight](https://app.pluralsight.com/library/courses/rxjs-angular-reactive-development/table-of-contents) & [Github](https://github.com/DeborahK/Angular-RxJS))
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
 
